@@ -4,45 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="application/javascript" src="js/script.js"></script>
+    
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <title>Cajero del Oxxo</title>
+
 </head>
 <body>
-    <table id="tablaProductos" border="1px">
+    <table id="tablaProductos" border="1px" style="min-width: 958px;" >
         <thead>
-            <tr align="center">
+            <tr>
                 <td>Codigo</td>
                 <td>Nombre</td>
                 <td>Cantidad</td>
                 <td>Precio</td>
                 <td>Total</td>
-                <td></td>
+                <td>
+                    <button id="agregarBtnInicial" name="agregarInicial">+</button>
+                </td>
             </tr>
         </thead>
         <tbody id="bodyTabla">
-            <td>
-                <input type="text" name="codigo" id="codigoTxt">
-            </td>
-            <td>
-                <input type="text" name="nombre" id="nombreTxt">
-            </td>
-            <td>
-                <input type="number" name="cantidad" id="cantidadTxt">
-            </td>
-            <td>
-                <input type="number" name="precio" id="precioNum">
-            </td>
-            <td>
-                <input type="number" name="total" id="totalNumber" disabled>                
-            </td>
-            <td>
-                <button id="agregarBtn" name="agregar">+</button>
-                <button id="quitarBtn" name="quitar" disabled>-</button>
-            </td>
-
+            <!-- <tr id="fila0">
+                <td>
+                    <input type="text" name="codigo" id="codigoTxt0">
+                </td>
+                <td>
+                    <input type="text" name="nombre" id="nombreTxt0">
+                </td>
+                <td>
+                    <input type="number" name="cantidad" id="cantidNum0" min="0">
+                </td>
+                <td>
+                    <input type="number" name="precio" id="precioNum0" min="0">
+                </td>
+                <td>
+                    <input type="number" name="total"  id="totalNum0" disabled>                
+                </td>
+                <td>
+                    <button id="agregarBtn0" name="agregar" >+</button>
+                    <button id="quitarBtn0" name="quitar" disabled>-</button>
+                </td>
+            </tr> -->
         </tbody>
     </table>
     <br>
-    <button id="crearNota" >Crear nota</button>
+    <button id="crearNotaBtn" >Crear nota</button>
 </body>
 </html>
