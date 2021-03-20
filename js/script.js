@@ -1,7 +1,6 @@
 let filasTotales = 0;
 
 let load =()=>{
-
         var codigos = []
         var nombres = []
         var precios = []
@@ -23,6 +22,10 @@ let load =()=>{
         if(idNum >totales.length){
             
             if(codigo != '' && nombre != '' && precio != null && cantidad != null) {
+                if(precio == 'e' || precio == 'E')
+                    precio = 0;
+                if(cantidad == 'e' || cantidad == 'E')
+                    cantidad = 0;
                 let totalNum = precio * cantidad;
                 total.value = totalNum;            
                 precios.push(precio)    
@@ -154,122 +157,124 @@ let load =()=>{
 
 
     let crearNota = () => {
-        let table = document.createElement("table")
-        let thead = document.createElement("thead")
-        let tbody = document.createElement("tbody")
-        let tr = document.createElement("tr")
-        let td = document.createElement("td")
-        let div = document.createElement("div")       
+        if(filasTotales > 0){
+            let table = document.createElement("table")
+            let thead = document.createElement("thead")
+            let tbody = document.createElement("tbody")
+            let tr = document.createElement("tr")
+            let td = document.createElement("td")
+            let div = document.createElement("div")       
+            
+            let container = document.getElementById("contenedor")
+            let n = codigos.length
+            console.log(n)
+
+            div.setAttribute("class", "ticket")
+
+            let img = document.createElement('img')
+            img.setAttribute("src", "img/Oxxo_Logo.png")
+            let txt1 = document.createElement('h4')
+            txt1.textContent = "Mexico-Acapulco, México 95D Real del Puente, 62790 Mor."
+            txt1.setAttribute("class", "centrado")
+            let txt2 = document.createElement('h3')
+            txt2.textContent = "-------------------------------------------"
+            txt2.setAttribute("class", "centrado")
+
+            div.appendChild(img)
+            div.appendChild(txt1)
+            div.appendChild(txt2)
+            div.appendChild(table)
+
+            let thead1 = document.createElement("td")
+            thead1.textContent = "Codigo "
+            let thead2 = document.createElement("td")
+            thead2.textContent = "Nombre "
+            let thead3 = document.createElement("td")
+            thead3.textContent = "Cantidad "
+            let thead4 = document.createElement("td")
+            thead4.textContent = "Precio "
+            let thead5 = document.createElement("td")
+            thead5.textContent = "Total "
+            thead.appendChild(thead1)
+            thead.appendChild(thead2)
+            thead.appendChild(thead3)
+            thead.appendChild(thead4)
+            thead.appendChild(thead5)
+
+            table.appendChild(thead)
+
+            table.appendChild(tbody)
         
-        let container = document.getElementById("contenedor")
-        let n = codigos.length
-        console.log(n)
+                for(let i=0; i<n; i++){
+                    let tr = document.createElement("tr")
+                    tbody.appendChild(tr)
 
-        div.setAttribute("class", "ticket")
-
-        let img = document.createElement('img')
-        img.setAttribute("src", "img/Oxxo_Logo.png")
-        let txt1 = document.createElement('h4')
-        txt1.textContent = "Mexico-Acapulco, México 95D Real del Puente, 62790 Mor."
-        txt1.setAttribute("class", "centrado")
-        let txt2 = document.createElement('h3')
-        txt2.textContent = "-------------------------------------------"
-        txt2.setAttribute("class", "centrado")
-
-        div.appendChild(img)
-        div.appendChild(txt1)
-        div.appendChild(txt2)
-        div.appendChild(table)
-
-        let thead1 = document.createElement("text")
-        thead1.textContent = "Codigo "
-        let thead2 = document.createElement("text")
-        thead2.textContent = "Nombre "
-        let thead3 = document.createElement("text")
-        thead3.textContent = "Cantidad "
-        let thead4 = document.createElement("text")
-        thead4.textContent = "Precio "
-        let thead5 = document.createElement("text")
-        thead5.textContent = "Total "
-        thead.appendChild(thead1)
-        thead.appendChild(thead2)
-        thead.appendChild(thead3)
-        thead.appendChild(thead4)
-        thead.appendChild(thead5)
-
-        table.appendChild(thead)
-
-        table.appendChild(tbody)
-     
-            for(let i=0; i<n; i++){
-                let tr = document.createElement("tr")
-                tbody.appendChild(tr)
-
-                    for(let j=0; j<5; j++){
-                        let td = document.createElement("td")
-    
-                        switch(j){
-                            case 0:
-                                let text1 = document.createElement("text")
-                                text1.textContent = codigos[i]
-                                tr.appendChild(td).appendChild(text1)
-                            break;
-                            case 1:
-                                let text2 = document.createElement("text")
-                                text2.textContent = nombres[i]
-                                tr.appendChild(td).appendChild(text2)
-                            break;
-                            case 2:
-                                let text3 = document.createElement("text")
-                                text3.textContent = cantidades[i]
-                                tr.appendChild(td).appendChild(text3)
-                            break;
-                            case 3:
-                                let text4 = document.createElement("text")
-                                text4.textContent = precios[i]
-                                tr.appendChild(td).appendChild(text4)
-                            break;
-                            case 4:
-                                let text5 = document.createElement("text")
-                                text5.textContent = totales[i]
-                                tr.appendChild(td).appendChild(text5)
-                            break;
-    
+                        for(let j=0; j<5; j++){
+                            let td = document.createElement("td")
+        
+                            switch(j){
+                                case 0:
+                                    let text1 = document.createElement("td")
+                                    text1.textContent = codigos[i]
+                                    tr.appendChild(td).appendChild(text1)
+                                break;
+                                case 1:
+                                    let text2 = document.createElement("td")
+                                    text2.textContent = nombres[i]
+                                    tr.appendChild(td).appendChild(text2)
+                                break;
+                                case 2:
+                                    let text3 = document.createElement("td")
+                                    text3.textContent = cantidades[i]
+                                    tr.appendChild(td).appendChild(text3)
+                                break;
+                                case 3:
+                                    let text4 = document.createElement("td")
+                                    text4.textContent = precios[i]
+                                    tr.appendChild(td).appendChild(text4)
+                                break;
+                                case 4:
+                                    let text5 = document.createElement("td")
+                                    text5.textContent = totales[i]
+                                    tr.appendChild(td).appendChild(text5)
+                                break;
+        
+                            }
                         }
-                    }
 
-            }
+                }
 
-        let txt3 = document.createElement('text')
-        txt3.textContent = "Subtotal $ "
-        let sub = document.createElement('text')
-        sub.textContent = subtotal(...totales)
-        console.log(sub)
-        
-        let txt4 = document.createElement('text')
-        txt4.textContent = "IVA $ "
-        let iva = document.createElement('text')
-        iva.textContent = calcularIVA(...totales)
-        console.log(iva)
-        
-        let txt5 = document.createElement('text')
-        txt5.textContent = "Total $ "
-        let total = document.createElement('text')
-        total.textContent = tot(...totales)
-        console.log(total)
+            let txt3 = document.createElement('text')
+            txt3.textContent = "Subtotal $ "
+            let sub = document.createElement('text')
+            sub.textContent = subtotal(...totales)
+            console.log(sub)
+            
+            let txt4 = document.createElement('text')
+            txt4.textContent = "IVA $ "
+            let iva = document.createElement('text')
+            iva.textContent = calcularIVA(...totales)
+            console.log(iva)
+            
+            let txt5 = document.createElement('text')
+            txt5.textContent = "Total $ "
+            let total = document.createElement('text')
+            total.textContent = tot(...totales)
+            console.log(total)
 
-        div.appendChild(txt3).appendChild(sub)
-        div.appendChild(td).appendChild(txt4).appendChild(iva)
-        div.appendChild(txt5).appendChild(total)
+            div.appendChild(txt3).appendChild(sub)
+            div.appendChild(td).appendChild(txt4).appendChild(iva)
+            div.appendChild(txt5).appendChild(total)
 
-            table.setAttribute("id", "ticket")
+                table.setAttribute("id", "ticket")
 
-            if(container.childElementCount>0){
-                let oldTable = document.getElementById("ticket")
-                container.removeChild(oldTable)
-            }
+                if(container.childElementCount>0){
+                    let oldTable = document.getElementById("ticket")
+                    container.removeChild(oldTable)
+                }
 
-        container.appendChild(div)
+            container.appendChild(div)
+        }
     }
 
     let subtotal = (...argumentos) =>{
