@@ -1,0 +1,19 @@
+.ticket {
+    margin-left: 400px;
+    margin-top: 50px;
+    width: 300px;
+    max-width: 700px;
+    border: 1px;
+}
+
+.centrado {
+    text-align: center;
+    align-content: center;
+}
+
+img {
+    margin-inline: 60px;
+    max-width: 150px;
+    width: 400px;
+    height: 75px;
+}
