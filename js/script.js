@@ -20,12 +20,7 @@ let load =()=>{
         let total    = document.getElementById('totalNum' + idNum);
        
         if(idNum >totales.length){
-            
             if(codigo != '' && nombre != '' && precio != null && cantidad != null) {
-                if(precio == 'e' || precio == 'E')
-                    precio = 0;
-                if(cantidad == 'e' || cantidad == 'E')
-                    cantidad = 0;
                 let totalNum = precio * cantidad;
                 total.value = totalNum;            
                 precios.push(precio)    
@@ -48,13 +43,21 @@ let load =()=>{
         }
         console.log(totales);
     }
+
     let actualizarTotalQuitar = (id)=>{
-        codigos[id-1]=0;
-        nombres[id-1]=0;
-        precios[id-1]=0;
-        cantidades[id-1]=0;
-        totales[id-1]=0;
+        // codigos[id-1]=0;
+        // nombres[id-1]=0;
+        // precios[id-1]=0;
+        // cantidades[id-1]=0;
+        // totales[id-1]=0;
+
+        codigos.splice(id-1,1);
+        nombres.splice(id-1,1);
+        cantidades.splice(id-1,1);
+        precios.splice(id-1,1);
+        totales.splice(id-1,1);
     }
+
     let eliminarFila = (elemento)=>{
         let index = elemento.parentElement.parentElement.rowIndex;
         let tabla = document.getElementById("bodyTabla").parentElement;
@@ -157,7 +160,7 @@ let load =()=>{
 
 
     let crearNota = () => {
-        if(filasTotales > 0){
+        if(filasTotales > 0) {
             let table = document.createElement("table")
             let thead = document.createElement("thead")
             let tbody = document.createElement("tbody")
